@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  # root 'dashboard#home'
-  root 'venues#index'
+  root 'dashboard#home'
   resources :venues do
     collection { post :import }
   end

@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Import Venues</h2>
+
+<%= form_tag import_venues_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+
+<h1>Listing Venues</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>State</th>
+      <th>Website</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Contact name</th>
+      <th>Alcohol</th>
+      <th>Distance from airport</th>
+      <th>Religious</th>
+      <th>Lake</th>
+      <th>Rental on site</th>
+      <th>Connected</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @venues.each do |venue| %>
+      <tr>
+        <td><%= venue.name %></td>
+        <td><%= venue.state %></td>
+        <td><%= venue.website %></td>
+        <td><%= venue.phone %></td>
+        <td><%= venue.email %></td>
+        <td><%= venue.contact_name %></td>
+        <td><%= venue.alcohol %></td>
+        <td><%= venue.distance_from_airport %></td>
+        <td><%= venue.religious %></td>
+        <td><%= venue.lake %></td>
+        <td><%= venue.rental_on_site %></td>
+        <td><%= venue.connected %></td>
+        <td><%= link_to 'Show', venue %></td>
+        <td><%= link_to 'Edit', edit_venue_path(venue) %></td>
+        <td><%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Venue', new_venue_path %>

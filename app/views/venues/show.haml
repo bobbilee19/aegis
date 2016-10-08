@@ -1,0 +1,40 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @venue.name
+%p
+  %strong State:
+  = @venue.state
+%p
+  %strong Website:
+  = @venue.website
+%p
+  %strong Phone:
+  = @venue.phone
+%p
+  %strong Email:
+  = @venue.email
+%p
+  %strong Contact name:
+  = @venue.contact_name
+%p
+  %strong Alcohol:
+  = @venue.alcohol
+%p
+  %strong Distance from airport:
+  = @venue.distance_from_airport
+%p
+  %strong Religious:
+  = @venue.religious
+%p
+  %strong Lake:
+  = @venue.lake
+%p
+  %strong Rental on site:
+  = @venue.rental_on_site
+%p
+  %strong Connected:
+  = @venue.connected
+= link_to 'Edit', edit_venue_path(@venue)
+|
+= link_to 'Back', venues_path

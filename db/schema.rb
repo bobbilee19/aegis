@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513152602) do
+ActiveRecord::Schema.define(version: 20161008132714) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer  "sponsor_id"
@@ -26,11 +26,11 @@ ActiveRecord::Schema.define(version: 20160513152602) do
   add_index "contacts", ["sponsor_id"], name: "index_contacts_on_sponsor_id"
 
   create_table "deliverables", force: :cascade do |t|
+    t.string   "description"
     t.date     "delivery_date"
     t.integer  "contact_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.text     "description"
     t.integer  "sponsor_id"
     t.string   "category"
   end
@@ -78,6 +78,23 @@ ActiveRecord::Schema.define(version: 20160513152602) do
     t.string   "email"
     t.string   "password"
     t.string   "password_confirmation"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.string   "name"
+    t.string   "state"
+    t.string   "website"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "contact_name"
+    t.boolean  "alcohol"
+    t.string   "distance_from_airport"
+    t.boolean  "religious"
+    t.boolean  "lake"
+    t.boolean  "rental_on_site"
+    t.boolean  "connected"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end

@@ -26,11 +26,11 @@ ActiveRecord::Schema.define(version: 20160513152602) do
   add_index "contacts", ["sponsor_id"], name: "index_contacts_on_sponsor_id"
 
   create_table "deliverables", force: :cascade do |t|
+    t.string   "description"
     t.date     "delivery_date"
     t.integer  "contact_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.text     "description"
     t.integer  "sponsor_id"
     t.string   "category"
   end

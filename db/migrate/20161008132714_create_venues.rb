@@ -13,6 +13,7 @@ class CreateVenues < ActiveRecord::Migration
       t.boolean :lake
       t.boolean :rental_on_site
       t.boolean :connected
+      t.string :status
 
       t.timestamps null: false
     end

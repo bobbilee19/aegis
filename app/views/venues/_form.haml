@@ -55,5 +55,9 @@
     = f.label :connected
     %br/
     = f.check_box :connected
+  .field
+    = f.label :status
+    %br/
+    = f.select(:status, options_for_select(Venue.status_options, @venue.status))
   .actions
     = f.submit

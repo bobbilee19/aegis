@@ -1,4 +1,5 @@
 %p#notice= notice
+= link_to 'Back', venues_path
 %p
   %strong Name:
   = @venue.name
@@ -35,6 +36,9 @@
 %p
   %strong Connected:
   = @venue.connected
+  %p
+    %strong Status:
+    = @venue.status
 = link_to 'Edit', edit_venue_path(@venue)
 |
-= link_to 'Back', venues_path
+= link_to 'Destroy', @venue, method: :delete, data: { confirm: 'Are you sure?' }

@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20161008132714) do
     t.boolean  "lake"
     t.boolean  "rental_on_site"
     t.boolean  "connected"
+    t.string   "status"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end

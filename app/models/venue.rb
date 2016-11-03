@@ -1,4 +1,6 @@
 class Venue < ActiveRecord::Base
+  scope :needs_follow_up, -> { where('status = ?', 'Waiting') }
+
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
@@ -23,10 +25,13 @@ class Venue < ActiveRecord::Base
     [
       'Waiting',
       'Interested',
+      'Interested / Last resort',
       'Not interested',
       'Waiting on me',
-      'Dates not matching',
-      'Next year'
+      'Next year',
+      'Never',
+      "Dates don't work",
+      'Waitlisted'
     ]
   end
 end

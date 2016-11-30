@@ -1,7 +1,28 @@
 %p#notice= notice
 = link_to 'Add New', new_venue_path
 
-%h1 Venues
+%h2 Import
+= form_tag import_venues_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag "Import"
+
+%h2 Call These
+%table
+  %thead
+    %tr
+      %th Name
+      %th Phone
+      %th Status
+      %th
+      %th{:colspan => "3"}
+  %tbody
+    - @venues.needs_follow_up.each do |venue|
+      %tr
+        %td= link_to venue.name, venue
+        %td= venue.phone
+        %td= venue.status
+
+%h1 All Venues
 %table
   %thead
     %tr
@@ -17,34 +38,9 @@
       %tr
         %td= link_to venue.name, venue
         %td= venue.state
-        %td= venue.website
+        %td= link_to venue.website, venue.website
         %td= venue.email
         %td= venue.status
         %td
         %td
         %td= link_to 'Edit', edit_venue_path(venue)
-%br/
-%h2 Import
-= form_tag import_venues_path, multipart: true do
-  = file_field_tag :file
-  = submit_tag "Import"
-
-%h2 Follow Up with these folks now
-%table
-  %thead
-    %tr
-      %th Name
-      %th State
-      %th Website
-      %th Phone
-      %th Email
-      %th
-      %th{:colspan => "3"}
-  %tbody
-    - @venues.needs_follow_up.each do |venue|
-      %tr
-        %td= link_to venue.name, venue
-        %td= venue.state
-        %td= venue.website
-        %td= venue.phone
-        %td= venue.email

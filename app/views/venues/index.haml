@@ -1,5 +1,5 @@
 %p#notice= notice
-= link_to 'Add New', new_venue_path
+= link_to 'Add New Venue', new_venue_path
 
 %h2 Import
 = form_tag import_venues_path, multipart: true do
@@ -18,9 +18,10 @@
   %tbody
     - @venues.needs_follow_up.each do |venue|
       %tr
-        %td= link_to venue.name, venue
+        %td= link_to venue.name, venue.website
         %td= venue.phone
         %td= venue.status
+        %td= link_to 'Edit', edit_venue_path(venue)
 
 %h1 All Venues
 %table
@@ -28,19 +29,15 @@
     %tr
       %th Name
       %th State
-      %th Website
-      %th Email
       %th Status
       %th
       %th{:colspan => "3"}
   %tbody
     - @venues.each do |venue|
       %tr
-        %td= link_to venue.name, venue
+        %td= link_to venue.name, venue.website
         %td= venue.state
-        %td= link_to venue.website, venue.website
-        %td= venue.email
         %td= venue.status
-        %td
-        %td
         %td= link_to 'Edit', edit_venue_path(venue)
+        %td= "|"
+        %td= link_to 'Email', venue.email

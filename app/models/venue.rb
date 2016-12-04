@@ -1,5 +1,6 @@
 class Venue < ActiveRecord::Base
   scope :needs_follow_up, -> { where.not('status = ?', 'Never') }
+  # Interested / Last resort
 
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
@@ -23,17 +24,19 @@ class Venue < ActiveRecord::Base
 
   def self.status_options
     [
-      'Waiting for email',
-      'Interested',
+      'Waiting for their email',
+      'Waiting for their call',
+      'Waiting on me to email',
+      'Waiting on me to call',
       'Interested / Last resort',
-      'Not interested',
-      'Waiting on me',
-      'Next year',
-      'Never',
+      'Interested',
       "Dates don't work",
       'Waitlisted',
-      'Left Voicemail',
-      'Waiting for call'
+      'Not interested',
+      'Next year',
+      'Never',
+      'Need to make first contact',
+      'Not sure check email'
     ]
   end
 end

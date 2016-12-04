@@ -11,36 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204212418) do
-
-  create_table "contacts", force: :cascade do |t|
-    t.integer  "sponsor_id"
-    t.string   "role"
-    t.string   "name"
-    t.string   "email"
-    t.string   "phone_number"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "contacts", ["sponsor_id"], name: "index_contacts_on_sponsor_id"
-
-  create_table "deliverables", force: :cascade do |t|
-    t.string   "description"
-    t.date     "delivery_date"
-    t.integer  "contact_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "sponsor_id"
-    t.string   "category"
-  end
-
-  add_index "deliverables", ["contact_id"], name: "index_deliverables_on_contact_id"
-  add_index "deliverables", ["sponsor_id"], name: "index_deliverables_on_sponsor_id"
+ActiveRecord::Schema.define(version: 20161204214251) do
 
   create_table "events", force: :cascade do |t|
     t.integer  "sponsor_id"
-    t.integer  "user_id"
     t.datetime "contact_at"
     t.string   "channel"
     t.text     "description"
@@ -49,7 +23,6 @@ ActiveRecord::Schema.define(version: 20161204212418) do
   end
 
   add_index "events", ["sponsor_id"], name: "index_events_on_sponsor_id"
-  add_index "events", ["user_id"], name: "index_events_on_user_id"
 
   create_table "sponsors", force: :cascade do |t|
     t.string   "name"
@@ -61,18 +34,6 @@ ActiveRecord::Schema.define(version: 20161204212418) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.integer  "sponsor_id"
-    t.integer  "assignee_id"
-    t.datetime "remind_at"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "tasks", ["assignee_id"], name: "index_tasks_on_assignee_id"
-  add_index "tasks", ["sponsor_id"], name: "index_tasks_on_sponsor_id"
-
   create_table "updates", force: :cascade do |t|
     t.text     "body"
     t.integer  "venue_id"
@@ -83,15 +44,6 @@ ActiveRecord::Schema.define(version: 20161204212418) do
 
   add_index "updates", ["event_id"], name: "index_updates_on_event_id"
   add_index "updates", ["venue_id"], name: "index_updates_on_venue_id"
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password"
-    t.string   "password_confirmation"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
 
   create_table "venues", force: :cascade do |t|
     t.string   "name"

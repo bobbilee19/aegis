@@ -6,15 +6,7 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
-  resources :sponsors, :assignees do
-    resources :tasks
-  end
-
-  resources :contacts do
-    resources :deliverables
-  end
-
-  resources :sponsors, :users do
-    resources :events
+  resources :events do
+    resources :sponsors
   end
 end

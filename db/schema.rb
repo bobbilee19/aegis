@@ -11,18 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204214251) do
+ActiveRecord::Schema.define(version: 20161207040401) do
 
   create_table "events", force: :cascade do |t|
-    t.integer  "sponsor_id"
-    t.datetime "contact_at"
-    t.string   "channel"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "location"
   end
-
-  add_index "events", ["sponsor_id"], name: "index_events_on_sponsor_id"
 
   create_table "sponsors", force: :cascade do |t|
     t.string   "name"
@@ -61,6 +60,7 @@ ActiveRecord::Schema.define(version: 20161204214251) do
     t.string   "status"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.integer  "event_id"
   end
 
 end

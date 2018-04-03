@@ -1,6 +1,7 @@
 class Venue < ActiveRecord::Base
+  belongs_to :event
+  has_many :updates
   scope :needs_follow_up, -> { where.not('status = ?', 'Never') }
-  # Interested / Last resort
 
   def self.import(file)
     spreadsheet = open_spreadsheet(file)

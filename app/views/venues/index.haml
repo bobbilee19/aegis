@@ -1,10 +1,7 @@
-%p#notice= notice
-= link_to 'Add New Venue', new_venue_path
+%h1= @venues.first.event.name
 
-%h2 Import
-= form_tag import_venues_path, multipart: true do
-  = file_field_tag :file
-  = submit_tag "Import"
+%p#notice= notice
+= link_to 'Add New Venue', new_event_venue_path
 
 %h2 Call These
 %table
@@ -21,7 +18,7 @@
         %td= link_to venue.name, venue.website
         %td= venue.phone
         %td= venue.status
-        %td= link_to 'Edit', edit_venue_path(venue)
+        %td= link_to 'Edit', edit_event_venue_path(venue.event, venue)
 
 %h1 All Venues
 %table
@@ -38,6 +35,8 @@
         %td= link_to venue.name, venue.website
         %td= venue.state
         %td= venue.status
-        %td= link_to 'Edit', edit_venue_path(venue)
+        %td= link_to 'Edit', edit_event_venue_path(venue.event, venue)
         %td= "|"
         %td= link_to 'Email', venue.email
+        %td= "|"
+        %td= link_to 'Update', new_event_venue_update_path(venue.event, venue)

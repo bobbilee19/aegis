@@ -1,1 +1,18 @@
-users events
+%p#notice= notice
+= link_to 'Add New Event', new_event_path
+
+%h2 Events
+%table
+  %thead
+    %tr
+      %th Name
+      %th Location
+      %th
+      %th{:colspan => "2"}
+  %tbody
+    - @events.each do |event|
+      %tr
+        %td= link_to event.name, event
+        %td= event.location
+        %td= link_to 'Edit', edit_event_path(event)
+        %td= link_to 'Venue Choices', event_venues_path(event)

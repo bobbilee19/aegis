@@ -18,6 +18,7 @@ class VenuesController < ApplicationController
   end
 
   def edit
+    @venue = Venue.find(params[:id])
   end
 
   def create
